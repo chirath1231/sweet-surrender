@@ -1,7 +1,7 @@
 import App from 'next/app';
 import './globals.css';
 import { AppProvider } from './context/AppProvider';
-import Navbar from '@/components/Navbar';
+
 import { Toaster } from 'react-hot-toast';
 import"bootstrap/dist/css/bootstrap.min.css";
 
@@ -19,7 +19,7 @@ export default function RootLayout({
             <body>
                 <AppProvider>
                     <Toaster />
-                    <Navbar />
+                 
                     {children}
                 </AppProvider>
                 </body>

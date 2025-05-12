@@ -49,7 +49,7 @@ const[IsLoading, setIsLoading] = useState<Boolean>(false);
 
     return(
         <AppContext.Provider value={{ login, register,IsLoading}}>
-            {!IsLoading ? <Loader /> : children}
+            {IsLoading ? <Loader/> : children}
             
         </AppContext.Provider>
     )
