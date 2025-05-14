@@ -41,13 +41,13 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #555;
+    color: #d9d1d1;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #d47a4c;
+    color: #732d0a;
 }
 
 main {
@@ -62,6 +62,8 @@ footer {
     padding: 10px 0;
     margin-top: 20px;
     border-top: 2px solid #e0e0e0;
+    
+    
 }
 
 /* Buttons */
