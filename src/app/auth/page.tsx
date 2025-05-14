@@ -1,8 +1,13 @@
 'use client';
-import React, { FormEvent, use, useState } from 'react';
+import React, { FormEvent, use, useEffect, useState } from 'react';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
-import { myAppHook } from '../context/AppProvider'; 
+import { myAppHook } from '../context/AppProvider';
+import { useRouter } from 'next/navigation';
+import { useSearchParams } from 'next/navigation';
+
+
+
 
 interface formData {
     name: string;
@@ -13,14 +18,26 @@ interface formData {
 
 const Auth: React.FC = () => {
 
-    const [islogin, setIsLogin] = useState<Boolean>(true);
+    const searchParams = useSearchParams();
+    const mode = searchParams.get("mode");
+    const islogin = mode !== "register"; // true = login, false = register
+
+
     const [formData, setFormData] = useState<formData>({
         name: "",
         email: "",
         password: "",
         password_confirmation: ""
     });
-    const { login,register } = myAppHook();
+    const router = useRouter();
+
+    const { login, register, authToken, IsLoading } = myAppHook()
+    useEffect(() => {
+        if (authToken) {
+            router.push("/")
+        }
+    }
+        , [authToken, IsLoading]);
 
     const hanndleOnchangeInput = (event: React.ChangeEvent<HTMLInputElement>): void => {
         setFormData({
@@ -30,34 +47,34 @@ const Auth: React.FC = () => {
     };
 
     // Removed duplicate handleFormSubmit function
-const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
-    event.preventDefault();
-    if (islogin) {
-        
-        try {
-            await login(formData.email, formData.password);
-        }
-        catch (error) {
-            console.log("Authentication failed ${error}");
-            
-        }
+    const handleFormSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+        event.preventDefault();
+        if (islogin) {
 
-    } else {
-        try {
-            await register(formData.name, formData.email, formData.password, formData.password_confirmation || "");
-        }
-        catch (error) {
-            console.log("Registration failed ${error}");
-            
-        }
-       
-        // Handle registration logic here           
-    }
-    // Here you can add your logic to handle the form submission
-    // For example, you can send the form data to your backend API
-};
+            try {
+                await login(formData.email, formData.password);
+            }
+            catch (error) {
+                console.log("Authentication failed ${error}");
 
-return (
+            }
+
+        } else {
+            try {
+                await register(formData.name, formData.email, formData.password, formData.password_confirmation!);
+            }
+            catch (error) {
+                console.log("Registration failed ${error}");
+
+            }
+
+            // Handle registration logic here           
+        }
+        // Here you can add your logic to handle the form submission
+        // For example, you can send the form data to your backend API
+    };
+
+    return (
 
         <>
             <Header />
@@ -65,7 +82,7 @@ return (
                 <div className="card p-4" style={{ width: '400px' }}>
 
                     <h3 className="text-center"> {islogin ? "Login" : "Register"}</h3>
-                    <form onSubmit={handleFormSubmit}>  
+                    <form onSubmit={handleFormSubmit}>
                         {
                             !islogin && <input className="form-control mb-2" name="name" type="text" value={formData.name} onChange={hanndleOnchangeInput} placeholder="Name" required />
                         }
@@ -76,11 +93,21 @@ return (
                             !islogin && <input className="form-control mb-2" name="password_confirmation" type="password" value={formData.password_confirmation} onChange={hanndleOnchangeInput} placeholder="Confirm Password" required />
                         }
 
-                        <button className="btn btn-primary w-100" type="submit">{islogin ? "Login" : "Register"}</button>
+                        <button
+                            className="btn w-100 fw-bold"
+                            type="submit"
+                            style={{
+                                backgroundColor: islogin ? "#d47a4c" : "#d47a4c",
+                                color: "white",
+                                border: "none",
+                            }}
+                        >
+                            {islogin ? "Login" : "Register"}
+                        </button>
                     </form>
 
-                    <p className="mt-3 text-center">{!islogin ? "Already have an account?" : "Don't have an account?"}
-                        <span onClick={() => setIsLogin(!islogin)} style={{ cursor: "pointer" }}>
+                    <p className="mt-3 text-center " style={{ color: islogin ? "#d47a4c" : "#d47a4c" }}>{!islogin ? "Already have an account?" : "Don't have an account?"}
+                        <span onClick={() => router.push(`/auth?mode=${islogin ? "register" : "login"}`)} style={{ cursor: "pointer" }}>
 
                             {islogin ? "Register" : "Login"}
 
