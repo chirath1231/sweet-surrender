@@ -41,13 +41,13 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: #555;
+    color: #d9d1d1;
     font-weight: bold;
     transition: color 0.3s ease;
 }
 
 nav ul li a:hover {
-    color: #d47a4c;
+    color: #732d0a;
 }
 
 main {
@@ -62,6 +62,8 @@ footer {
     padding: 10px 0;
     margin-top: 20px;
     border-top: 2px solid #e0e0e0;
+    
+    
 }
 
 /* Buttons */
@@ -303,54 +305,42 @@ footer {
     font-weight: bold;
     color: #333;
 }
-.auth-container {
-  max-width: 400px;
-  margin: 3rem auto;
+body {
+  font-family: sans-serif;
+  background: #f8f8f8;
+  margin: 0;
   padding: 2rem;
+}
+
+.form-container {
+  max-width: 400px;
+  margin: auto;
+  background: white;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+form input {
+  width: 100%;
+  margin: 0.5rem 0;
+  padding: 0.75rem;
   border: 1px solid #ccc;
-  border-radius: 10px;
-  text-align: center;
-  background-color: #fff8f0;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 4px;
 }
 
-.auth-container h2 {
-  margin-bottom: 1.5rem;
-  font-size: 1.8rem;
-  color: #2d2d2d;
-}
-
-.auth-container form {
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-}
-
-.auth-container input {
+form button {
+  width: 100%;
   padding: 0.75rem;
-  font-size: 1rem;
-  border-radius: 5px;
-  border: 1px solid #aaa;
-}
-
-.auth-container button {
-  padding: 0.75rem;
-  font-size: 1rem;
-  background-color: #ff6b6b;
+  background: #4caf50;
   color: white;
   border: none;
-  border-radius: 5px;
-  cursor: pointer;
-}
-
-.auth-container button:hover {
-  background-color: #e65b5b;
-}
-
-.message {
+  border-radius: 4px;
   margin-top: 1rem;
-  color: #333;
-  font-size: 0.95rem;
+}
+
+p {
+  color: green;
 }
 
 
