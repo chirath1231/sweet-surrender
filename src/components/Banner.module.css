@@ -1,0 +1,28 @@
+.bannerContainer {
+    background-color: #d47a4c; /* Your theme's accent color */
+    color: #fff;
+    padding: 10px 0;
+    overflow: hidden; /* Important to hide the text that scrolls out */
+    white-space: nowrap; /* Keep the text on a single line */
+    box-sizing: border-box;
+}
+
+.scrollingText {
+    display: inline-block; /* Allows the animation to work correctly */
+    padding-left: 100%; /* Start with text off-screen to the right */
+    animation: scroll-left 20s linear infinite; /* Adjust duration as needed */
+    font-size: 1em;
+    font-weight: bold;
+}
+
+@keyframes scroll-left {
+    0% {
+        transform: translateX(0%); 
+    }
+    100% {
+        transform: translateX(-100%); /* Move text fully to the left */
+    }
+}
+
+/* Optional: Add a duplicate of the text for a seamless loop effect if content is short */
+/* This would require duplicating the {fullMessage} in Banner.tsx and adjusting animation */ 

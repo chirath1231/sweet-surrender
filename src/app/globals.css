@@ -8,18 +8,18 @@ body {
 }
 
 header {
-    background-color: #ffeecc;
-    padding: 20px 0;
-    border-bottom: 2px solid #e0e0e0;
+    background-color: transparent;
+    padding: 0;
+    border-bottom: none;
 }
 
 nav {
+    background-color: #ffeecc;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
+    padding: 15px 20px;
+    border-bottom: 2px solid #e0e0e0;
 }
 
 .logo {
@@ -107,23 +107,57 @@ footer {
 
 /* Hero Section (Homepage) */
 .hero {
+    position: relative;
     text-align: center;
-    padding: 80px 0;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    padding: 100px 20px;
+    background-image: url('https://placehold.co/1920x700/000000/FFFFFF?text=Delicious+Baked+Goods&font=montserrat');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero > * {
+    position: relative;
+    z-index: 2;
 }
 
 .hero h1 {
-    font-size: 2.5em;
-    color: #d47a4c;
-    margin-bottom: 10px;
+    font-size: 3em;
+    color: #fff;
+    margin-bottom: 20px;
+    font-weight: bold;
 }
 
 .hero p {
-    font-size: 1.1em;
-    color: #555;
-    margin-bottom: 30px;
+    font-size: 1.3em;
+    color: #f0f0f0;
+    margin-bottom: 40px;
+}
+
+.hero .cta-button {
+    padding: 15px 30px;
+    font-size: 1.2em;
+    background-color: #d47a4c;
+    border: 2px solid #d47a4c;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.hero .cta-button:hover {
+    background-color: #fff;
+    color: #d47a4c;
 }
 
 /* Featured Products (Homepage & Products Page) */
@@ -146,33 +180,98 @@ footer {
 
 .products-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
 }
 
 .product-card {
     text-align: center;
-    padding: 20px;
-    border: 1px solid #eee;
-    border-radius: 8px;
+    padding: 0;
+    border: 1px solid #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
 }
 
 .product-card img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 15px;
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    margin-bottom: 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.product-card-content {
+    padding: 20px;
 }
 
 .product-card h3 {
     margin-top: 0;
     margin-bottom: 10px;
-    color: #555;
+    color: #333;
+    font-size: 1.3em;
 }
 
 .product-card p {
-    color: #777;
+    color: #555;
+    font-weight: normal;
+    margin-bottom: 10px;
+    font-size: 1em;
+}
+
+.product-card .price {
     font-weight: bold;
+    color: #d47a4c;
+    font-size: 1.2em;
     margin-bottom: 15px;
+}
+
+.product-card .stock-status {
+    font-size: 0.9em;
+    margin-bottom: 15px;
+}
+
+.product-card .quantity-selector {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.product-card .quantity-selector input {
+    width: 50px;
+    text-align: center;
+    margin: 0 8px;
+    padding: 8px 5px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.product-card .quantity-selector button {
+    padding: 8px 12px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    cursor: pointer;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.product-card .quantity-selector button:hover {
+    background-color: #e0e0e0;
+}
+
+.product-card .button {
+    width: calc(100% - 40px);
+    margin: 0 20px 20px 20px;
+    padding: 12px 20px;
+    font-size: 1em;
 }
 
 /* About Us Page */

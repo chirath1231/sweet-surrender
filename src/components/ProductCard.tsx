@@ -33,42 +33,43 @@ const ProductCard = ({ id, image, name, price, category, stock }: ProductCardPro
     };
 
     const handleAddToCart = () => {
-        const productToAdd = { id, name, price, image, stock };
+        const productToAdd = { id, name, price, image, stock, category };
         addToCart(productToAdd, selectedQuantity);
     };
 
     return (
         <div className="product-card">
-            <img src={`/images/${image}`} alt={name} />
-            <h3>{name}</h3>
-            <p style={{ fontSize: '0.9em', color: '#777' }}>Category: {category}</p>
-            <p>{price}</p>
-            <p style={{ fontSize: '0.9em', color: stock > 0 ? 'green' : 'red' }}>
-                Stock: {stock > 0 ? `${stock} available` : 'Out of stock'}
-            </p>
+            <img src={image} alt={name} />
+            <div className="product-card-content">
+                <h3>{name}</h3>
+                <p style={{ fontSize: '0.9em', color: '#777' }}>Category: {category}</p>
+                <p className="price">{price}</p>
+                <p className="stock-status" style={{ color: stock > 0 ? 'green' : 'red' }}>
+                    {stock > 0 ? `${stock} available` : 'Out of stock'}
+                </p>
 
-            {stock > 0 && (
-                <div className="quantity-selector" style={{ margin: '10px 0', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-                    <button onClick={() => handleQuantityChange(-1)} disabled={selectedQuantity <= 1} style={{ padding: '5px 10px' }}>-</button>
-                    <input
-                        type="number"
-                        value={selectedQuantity}
-                        onChange={handleInputChange}
-                        min="1"
-                        max={stock}
-                        style={{ width: '50px', textAlign: 'center', margin: '0 5px', padding: '5px' }}
-                    />
-                    <button onClick={() => handleQuantityChange(1)} disabled={selectedQuantity >= stock} style={{ padding: '5px 10px' }}>+</button>
-                </div>
-            )}
+                {stock > 0 && (
+                    <div className="quantity-selector">
+                        <button onClick={() => handleQuantityChange(-1)} disabled={selectedQuantity <= 1}>-</button>
+                        <input
+                            type="number"
+                            value={selectedQuantity}
+                            onChange={handleInputChange}
+                            min="1"
+                            max={stock}
+                        />
+                        <button onClick={() => handleQuantityChange(1)} disabled={selectedQuantity >= stock}>+</button>
+                    </div>
+                )}
 
-            <button 
-                className="button" 
-                disabled={stock === 0}
-                onClick={handleAddToCart}
-            >
-                {stock > 0 ? 'Add to Cart' : 'Out of Stock'}
-            </button>
+                <button 
+                    className="button" 
+                    disabled={stock === 0}
+                    onClick={handleAddToCart}
+                >
+                    {stock > 0 ? 'Add to Cart' : 'Out of Stock'}
+                </button>
+            </div>
         </div>
     );
 };
