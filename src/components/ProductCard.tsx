@@ -13,7 +13,7 @@ type ProductCardProps = {
 };
 
 const ProductCard = ({ id, image, name, price, category, stock }: ProductCardProps) => {
-    const { addToCart } = myAppHook();
+    const { addToCart, authToken } = myAppHook();
     const [selectedQuantity, setSelectedQuantity] = React.useState(1);
 
     const handleQuantityChange = (change: number) => {
@@ -32,8 +32,16 @@ const ProductCard = ({ id, image, name, price, category, stock }: ProductCardPro
         }
     };
 
-    const handleAddToCart = () => {
+    const handleAddToCart = async () => {
         const productToAdd = { id, name, price, image, stock, category };
+        await fetch('http://localhost:8000/api/cart/add', {
+            method: 'POST',
+            headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${authToken}`
+            },
+            body: JSON.stringify({ product_id: id, quantity: stock }),
+        });
         addToCart(productToAdd, selectedQuantity);
     };
 

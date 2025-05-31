@@ -44,10 +44,14 @@ const allProducts = [
     { id: 22, image: 'placeholder-pie-cherry.svg', name: 'Cherry Lattice Pie (9-inch)', price: '$27.00', category: 'Pies', stock: 6 },
 ];
 
+
 // Helper function to group products by category
-const groupProductsByCategory = (products: typeof allProducts) => {
+const groupProductsByCategory = (products: typeof allProducts = []) => {
+    if (!Array.isArray(products)) return {} as Record<string, typeof allProducts>;
     return products.reduce((acc, product) => {
         const category = product.category;
+        console.log(`Grouping product: ${product.name} under category: ${category}`);
+        
         if (!acc[category]) {
             acc[category] = [];
         }
@@ -58,7 +62,34 @@ const groupProductsByCategory = (products: typeof allProducts) => {
 
 const ProductsPage = () => {
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null); // null means show all
-    const categorizedProducts = groupProductsByCategory(allProducts);
+    const [products, setProducts] = useState<typeof allProducts>([]);
+    const [isLoading, setIsLoading] = useState(true);
+
+    // Fetch products when component mounts
+    React.useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await fetch('http://localhost:8000/api/products');
+                if (!response.ok) throw new Error('Failed to fetch products');
+                const data = await response.json();
+                // Convert data to array if it's an object
+                const productsArray = Array.isArray(data.products) ? data.products : Object.values(data.products);
+                setProducts(productsArray);
+            } catch (error) {
+                console.error('Error fetching products:', error);
+                // Fallback to static products if API fails
+                setProducts(allProducts);
+            } finally {
+                setIsLoading(false);
+            }
+        };
+
+        fetchProducts();
+    }, []);
+
+    const categorizedProducts = groupProductsByCategory(products);
+    console.log('Categorized Products:', categorizedProducts);
+    
     const uniqueCategories = Object.keys(categorizedProducts);
 
     const handleCategoryChange = (event: React.ChangeEvent<HTMLSelectElement>) => {
@@ -73,8 +104,11 @@ const ProductsPage = () => {
             [selectedCategory]: categorizedProducts[selectedCategory]
         };
     } else {
-        // If no category is selected (or selectedCategory is null), show all categorized products
         productsToDisplay = categorizedProducts;
+    }
+
+    if (isLoading) {
+        return <div>Loading products...</div>;
     }
 
     return (
