@@ -62,13 +62,13 @@ const AboutPage = () => {
                         {
                             name: 'Emily',
                             role: 'Head Baker & Founder',
-                            image: '/images/placeholder-baker1.svg',
+                            image: 'emily.jpg',
                             bio: 'Emily has 15+ years of experience and loves crafting artisan cakes.',
                         },
                         {
                             name: 'David',
                             role: 'Pastry Chef',
-                            image: '/images/placeholder-baker2.svg',
+                            image: 'david.jpg',
                             bio: 'David’s specialties include seasonal tarts and croissants.',
                         },
                     ].map((member) => (
@@ -102,7 +102,7 @@ const AboutPage = () => {
                     <h3>Sweet Stats</h3>
                     <div style={{ display: 'flex', justifyContent: 'center', gap: '40px', marginTop: '20px', flexWrap: 'wrap' }}>
                         <div>
-                            <h4 style={{ fontSize: '2rem', color: '#d47a4c' }}>10,000+</h4>
+                            <h4 style={{ fontSize: '2rem', color: '#d47a4c' }}>100+</h4>
                             <p>Cakes Sold</p>
                         </div>
                         <div>
