@@ -34,11 +34,26 @@ const AboutPage = () => {
                         {showFullStory ? 'Hide Story' : 'Read Our Story'}
                     </button>
                     {showFullStory && (
-                        <p style={{ marginTop: '1rem', color: '#444' }}>
-                            Our story began in a cozy home kitchen where Emily discovered her passion for pastries.
-                            Over the years, we grew into a beloved neighborhood bakery. Every cake, cookie, and
-                            croissant is made with care, bringing smiles one bite at a time.
-                        </p>
+                        <div style={{ marginTop: '1rem', color: '#444' }}>
+                            <p style={{ marginBottom: '1rem' }}>
+                                Our story began in a cozy home kitchen where Emily discovered her passion for pastries.
+                                What started as weekend experiments with family recipes quickly blossomed into a
+                                lifelong dedication to the art of baking.
+                            </p>
+                            <p style={{ marginBottom: '1rem' }}>
+                                In 2010, we opened our first tiny shop with just three display cases and a small oven.
+                                Word spread quickly about our handcrafted pastries, and soon we had lines forming
+                                around the block every morning. Over the years, we grew into a beloved neighborhood
+                                bakery, expanding to two locations while maintaining our commitment to quality.
+                            </p>
+                            <p>
+                                Today, every cake, cookie, and croissant is still made with the same care and
+                                attention to detail as those first home-kitchen creations. We source our ingredients
+                                from local suppliers whenever possible, and each recipe has been perfected through
+                                years of dedication. Our mission remains simple: bringing smiles, one delicious
+                                bite at a time.
+                            </p>
+                        </div>
                     )}
                 </section>
 
