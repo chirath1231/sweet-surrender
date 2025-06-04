@@ -126,6 +126,18 @@ const AboutPage = () => {
                         <summary style={{ cursor: 'pointer', fontWeight: 'bold' }}>Do you offer delivery?</summary>
                         <p style={{ paddingLeft: '1rem', color: '#555' }}>We deliver within a 10km radius from our shops.</p>
                     </details>
+                    <details style={{ margin: '10px 0' }}>
+                        <summary style={{ cursor: 'pointer', fontWeight: 'bold' }}>What are your hours of operation?</summary>
+                        <p style={{ paddingLeft: '1rem', color: '#555' }}>We're open Monday to Saturday, 7am to 7pm. Sundays 8am to 5pm.</p>
+                    </details>
+                    <details style={{ margin: '10px 0' }}>
+                        <summary style={{ cursor: 'pointer', fontWeight: 'bold' }}>Do you accommodate dietary restrictions?</summary>
+                        <p style={{ paddingLeft: '1rem', color: '#555' }}>Yes, we offer gluten-free, vegan, and nut-free options. Please inform us of any allergies when ordering.</p>
+                    </details>
+                    <details style={{ margin: '10px 0' }}>
+                        <summary style={{ cursor: 'pointer', fontWeight: 'bold' }}>How far in advance should I order for special events?</summary>
+                        <p style={{ paddingLeft: '1rem', color: '#555' }}>For wedding cakes, we recommend 2-3 months. For other special events, 1-2 weeks notice is appreciated.</p>
+                    </details>
                 </section>
             </main>
             <Footer />
