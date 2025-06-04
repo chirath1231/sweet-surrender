@@ -1,8 +1,7 @@
 'use client'; // Added for client-side interactions (dropdown, scrolling)
-
-import React, { useState } from 'react'; // Import useState
-import Header from '@/components/Header';
+import Header from '@/components/Header';  
 import Footer from '@/components/Footer';
+import React, { useState } from 'react'; // Import useState
 import ProductCard from '@/components/ProductCard';
 
 // Expanded and diversified product list
