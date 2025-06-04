@@ -11,37 +11,7 @@ const allProducts = [
     { id: 1, image: 'placeholder-cake-chocolate.svg', name: 'Decadent Chocolate Fudge Cake', price: '$35.00', category: 'Cakes', stock: 10 },
     { id: 2, image: 'placeholder-cake-strawberry.svg', name: 'Strawberry Shortcake Dream', price: '$40.00', category: 'Cakes', stock: 7 },
     { id: 3, image: 'placeholder-cake-vanilla.svg', name: 'Classic Vanilla Bean Cake', price: '$30.00', category: 'Cakes', stock: 12 },
-    { id: 4, image: 'placeholder-cake-lemon.svg', name: 'Lemon Zest Pound Cake', price: '$28.00', category: 'Cakes', stock: 9 },
-    { id: 5, image: 'placeholder-cake-carrot.svg', name: 'Carrot Cake with Cream Cheese Frosting', price: '$38.00', category: 'Cakes', stock: 6 },
 
-    // Cupcakes
-    { id: 6, image: 'placeholder-cupcake-vanilla.svg', name: 'Vanilla Cupcakes (6 pack)', price: '$20.00', category: 'Cupcakes', stock: 25 },
-    { id: 7, image: 'placeholder-cupcake-redvelvet.svg', name: 'Red Velvet Cupcakes (6 pack)', price: '$22.00', category: 'Cupcakes', stock: 18 },
-    { id: 8, image: 'placeholder-cupcake-chocolate.svg', name: 'Double Chocolate Cupcakes (6 pack)', price: '$22.00', category: 'Cupcakes', stock: 20 },
-
-    // Cookies
-    { id: 9, image: 'placeholder-cookie-chocolatechip.svg', name: 'Gourmet Chocolate Chip Cookies (dozen)', price: '$15.00', category: 'Cookies', stock: 30 },
-    { id: 10, image: 'placeholder-cookie-oatmeal.svg', name: 'Oatmeal Raisin Spice Cookies (dozen)', price: '$14.00', category: 'Cookies', stock: 22 },
-    { id: 11, image: 'placeholder-cookie-sugarcookies.svg', name: 'Decorated Sugar Cookies (dozen)', price: '$20.00', category: 'Cookies', stock: 15 },
-
-    // Breads
-    { id: 12, image: 'placeholder-bread-sourdough.svg', name: 'Artisan Sourdough Loaf', price: '$8.00', category: 'Breads', stock: 15 },
-    { id: 13, image: 'placeholder-bread-baguette.svg', name: 'Classic French Baguette', price: '$6.00', category: 'Breads', stock: 20 },
-    { id: 14, image: 'placeholder-bread-multigrain.svg', name: 'Multigrain Sandwich Bread', price: '$7.00', category: 'Breads', stock: 18 },
-
-    // Muffins
-    { id: 15, image: 'placeholder-muffin-blueberry.svg', name: 'Jumbo Blueberry Muffins (4 pack)', price: '$16.00', category: 'Muffins', stock: 10 },
-    { id: 16, image: 'placeholder-muffin-chocchip.svg', name: 'Chocolate Chip Muffins (4 pack)', price: '$16.00', category: 'Muffins', stock: 12 },
-    { id: 17, image: 'placeholder-muffin-banana.svg', name: 'Banana Nut Muffins (4 pack)', price: '$18.00', category: 'Muffins', stock: 0 }, // Out of stock
-
-    // Pastries
-    { id: 18, image: 'placeholder-pastry-croissant.svg', name: 'Flaky Butter Croissant', price: '$4.50', category: 'Pastries', stock: 35 },
-    { id: 19, image: 'placeholder-pastry-danish.svg', name: 'Cream Cheese Danish', price: '$5.00', category: 'Pastries', stock: 28 },
-    { id: 20, image: 'placeholder-pastry-eclair.svg', name: 'Chocolate Eclair', price: '$5.50', category: 'Pastries', stock: 20 },
-
-    // Pies (New Category)
-    { id: 21, image: 'placeholder-pie-apple.svg', name: 'Homestyle Apple Pie (9-inch)', price: '$25.00', category: 'Pies', stock: 8 },
-    { id: 22, image: 'placeholder-pie-cherry.svg', name: 'Cherry Lattice Pie (9-inch)', price: '$27.00', category: 'Pies', stock: 6 },
 ];
 
 

@@ -15,12 +15,12 @@ const HomePage = () => (
             {/* Hero Section - styling will be in globals.css or a dedicated module */}
             <section className="hero" style={{ 
                 // Placeholder for background image, will be refined
-                // backgroundImage: `url('https://placehold.co/1920x600/333/ccc?text=Bakery+Hero+Image')`,
-                // backgroundSize: 'cover',
-                // backgroundPosition: 'center',
-                // padding: '60px 20px', // Increased padding
-                // color: '#fff', // Assuming text will be light on dark/image background
-                // textAlign: 'center'
+                backgroundImage: `url('frontpage.jpg')`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                padding: '60px 20px', // Increased padding
+                color: '#fff', // Assuming text will be light on dark/image background
+                textAlign: 'center'
             }}>
                 <h1>Welcome to Sweet Surrender Bakery</h1>
                 <p style={{ fontSize: '1.2em', marginBottom: '30px' }}>Indulge in our freshly baked delights.</p>
