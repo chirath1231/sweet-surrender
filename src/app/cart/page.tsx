@@ -54,8 +54,24 @@ export default function CartPage() {
     );
   };
 
-  const removeFromCart = (id: number) => {
-    setCart(prev => prev.filter(item => item.id !== id));
+  const removeFromCart = async (id: number) => {
+    try {
+      const response = await fetch(`http://127.0.0.1:8000/api/cart/${id}`, {
+        method: 'DELETE',
+        headers: {
+          Authorization: `Bearer ${authToken}`,
+          'Content-Type': 'application/json',
+        },
+      });
+
+      if (response.ok) {
+        setCart(prev => prev.filter(item => item.id !== id));
+      } else {
+        console.error('Failed to delete cart item');
+      }
+    } catch (error) {
+      console.error('Error deleting cart item:', error);
+    }
   };
 
   const subtotal = cart.reduce(
@@ -72,9 +88,9 @@ export default function CartPage() {
     try {
       const res = await fetch('http://127.0.0.1:8000/api/generate-hash', {
         method: 'POST',
-        headers: { 
+        headers: {
           'Content-Type': 'application/json',
-          'Authorization': `Bearer ${authToken}`
+          Authorization: `Bearer ${authToken}`,
         },
         body: JSON.stringify({ order_id: orderId, amount, currency: 'LKR' }),
       });
@@ -83,15 +99,17 @@ export default function CartPage() {
 
       const payment = {
         sandbox: true,
-        merchant_id: '1230639', // 🔁 Replace with real ID
+        merchant_id: '1230639', // Replace with your sandbox merchant ID
         return_url: 'http://localhost:3000/payment-success',
         cancel_url: 'http://localhost:3000/payment-cancel',
         notify_url: 'http://127.0.0.1:8000/api/payhere-notify',
+
         order_id: orderId,
         items: 'Bakery Cart Order',
-        amount: amount,
+        amount,
         currency: 'LKR',
-        hash: hash,
+        hash,
+
         first_name: 'John',
         last_name: 'Doe',
         email: 'john@example.com',
@@ -104,9 +122,11 @@ export default function CartPage() {
       window.payhere.onCompleted = (orderId: string) => {
         console.log('✅ Payment completed:', orderId);
       };
+
       window.payhere.onDismissed = () => {
         console.log('❌ Payment dismissed');
       };
+
       window.payhere.onError = (err: any) => {
         console.error('❗ Payment error:', err);
       };
@@ -121,9 +141,9 @@ export default function CartPage() {
     <>
       <Header />
       <main style={{ padding: '30px' }}>
-        <h2>Your Cart</h2>
+        <h2 style={{ textAlign: 'center' }}>Your Cart</h2>
         {cart.length === 0 ? (
-          <p>Your cart is empty.</p>
+        <p style={{ textAlign: 'center' }}>Your cart is empty.</p>
         ) : (
           <div
             style={{
